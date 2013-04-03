@@ -33,11 +33,20 @@ void hashit(const char *msg, int nbytes, size_t hashbitlen, int verbose)
   if (verbose) {
     printf("output:\n");
     print_bytes(hashval, hashbitlen / 8);
-  }  
+  }
+  distanceCalculator(hashval);
 }
 
 int distanceCalculator(char *hash){
   int len = sizeof(hash)  / sizeof(char);
+  int i =0;
+  int total = 0;
+  for(i=0; i<=len; i++){
+      total += hash[i] ^ target[i];
+  }
+  total = 1024 - total;
+  printf("total bits wrong by " << total << "bits");
+  return total;
 }
 
 char *target = "5b4da95f5fa08280fc9879df44f418c8f9f12ba424b7757de02bbdfbae0d4c4fdf9317c80cc5fe04c6429073466cf29706b8c25999ddd2f6540d4475cc977b87f4757be023f19b8f4035d7722886b78869826de916a79cf9c94cc79cd4347d24b567aa3e2390a573a373a48a5e676640c79cc70197e1c5e7f902fb53ca1858b6";
