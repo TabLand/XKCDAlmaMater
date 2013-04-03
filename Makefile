@@ -1,0 +1,2 @@
+all:
+	gcc skein_test.c skein.c skein_block.c -o skein_test
